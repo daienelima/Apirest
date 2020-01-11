@@ -28,30 +28,36 @@ public class ProdutoController {
 	@Autowired
 	ProdutoRepository produtoRepository;
 	
+	@CrossOrigin
 	@GetMapping("/produto")
 	@ApiOperation(value="Retorna uma lista de produtos")
 	public List<Produto> listaProdutos(){
 		return produtoRepository.findAll();
 	}
 	
+	
+	@CrossOrigin
 	@GetMapping("/produto/{id}")
 	@ApiOperation(value="Retorna um produto por id")
 	public Produto listaProdutoUnico(@PathVariable(value="id")long id){
 		return produtoRepository.findById(id);
 	}
 
+	@CrossOrigin
 	@PostMapping("/produto")
 	@ApiOperation(value="Salva um produto")
 	public Produto salvaProduto(@RequestBody Produto produto) {
 		return produtoRepository.save(produto);
 	}
 	
+	@CrossOrigin
 	@DeleteMapping("/produto")
 	@ApiOperation(value="Delete produto")
 	public void deletaProduto(@RequestBody Produto produto) {
 		produtoRepository.delete(produto);
 	}
 
+	@CrossOrigin
 	@PutMapping("/produto")
 	@ApiOperation(value="Atualiza um produto")
 	public Produto atualizaProduto(@RequestBody Produto produto) {
