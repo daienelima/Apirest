@@ -56,6 +56,13 @@ public class ProdutoController {
 	public void deletaProduto(@RequestBody Produto produto) {
 		produtoRepository.delete(produto);
 	}
+	
+	@CrossOrigin
+	@DeleteMapping("/produto/{id}")
+	@ApiOperation(value="Delete produto por id")
+	public void deletaProdutoById(@PathVariable(name="id") Long id) {
+		produtoRepository.deleteById(id);
+	}
 
 	@CrossOrigin
 	@PutMapping("/produto")
